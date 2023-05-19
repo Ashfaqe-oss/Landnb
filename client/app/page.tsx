@@ -19,7 +19,8 @@ export default async function Home({ searchParams }: HomeProps) {
   let listings = await getListings();
 
   if(searchParams) {
-    listings = await getListingsFiltered(searchParams)
+    const filListings = await getListingsFiltered(searchParams)
+    listings = [...filListings, ...listings] 
   }
   // const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
