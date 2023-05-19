@@ -13,7 +13,7 @@ export interface IListingsParams {
   roomType?: string;
 }
 
-export default async function getListingsPro(params: IListingsParams) {
+export default async function getListingsFiltered(params: IListingsParams) {
   try {
     const {
       userId,

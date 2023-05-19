@@ -1,4 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
+'use server'
+
 import Image from "next/image";
 import Container from "./components/Container";
 import EmptyState from "./components/EmptyState";
@@ -6,7 +7,7 @@ import getCurrentUser from "./actions/getCurrentUser";
 import getListings from "./actions/getListings";
 import ListingCard from "./components/listings/ListingCard";
 import { IListingsParams } from "./actions/getListingsPro";
-import getListingsPro from "./actions/getListingsFiltered";
+import getListingsFiltered from "./actions/getListingsFiltered";
 
 interface HomeProps {
   searchParams: IListingsParams
@@ -18,9 +19,7 @@ export default async function Home({ searchParams }: HomeProps) {
   let listings = await getListings();
 
   if(searchParams) {
-    console.log(searchParams)
-
-    listings = await getListingsPro(searchParams)
+    listings = await getListingsFiltered(searchParams)
   }
   // const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
