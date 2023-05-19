@@ -14,7 +14,7 @@ interface IParams {
 //IN SERVER COMPONENTS CANNOT USE HOOKS
 
 const ListingPage = async ({ params }: { params: IParams }) => {
-  console.log(params)
+  // console.log(params)
 
   const listing = await getListingById(params);
   const reservations = await getReservations(params);

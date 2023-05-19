@@ -19,7 +19,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
   const params = useSearchParams();
 
   const handleClick = useCallback(() => {
-    console.log("clicked category box", label);
+    // console.log("clicked category box", label);
 
     let currentQuery = {}; //Settting empty query
 
@@ -47,7 +47,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
     router.push(url);
   }, [label, router, params]);
-  
+
   return (
     <div
       onClick={handleClick}

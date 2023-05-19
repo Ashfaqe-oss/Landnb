@@ -103,7 +103,7 @@ const Categories = () => {
   const pathname = usePathname();
   const isMainPage = pathname === "/";
 
-  console.log(params, pathname);
+  // console.log(params, pathname);
   if (!isMainPage) {
     return null;
   }

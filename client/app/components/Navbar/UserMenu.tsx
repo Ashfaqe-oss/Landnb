@@ -34,7 +34,7 @@ interface UserMenuProps {
         return loginModal.onOpen();
       }
   
-      console.log('rent open')
+      // console.log('rent open')
       rentModal.onOpen();
     }, [loginModal, rentModal, currentUser]);
   

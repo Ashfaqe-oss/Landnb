@@ -37,7 +37,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
 }) => {
   const router = useRouter();
 
-  console.log("listing", listingId, listing)
+  // console.log("listing", listingId, listing)
 
   const { getByValue } = useCountries();
 
@@ -75,7 +75,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     return `${format(start, "PP")} - ${format(end, "PP")}`;
   }, [reservation]);
 
-  console.log(listing);
+  // console.log(listing);
 
   if (!listing?.imageSrc) {
     return null;

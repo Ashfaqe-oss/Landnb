@@ -11,7 +11,7 @@ const FavoritesClient: React.FC<favoritesClientProps> = ({
   listings,
   currentUser,
 }) => {
-  console.log(listings);
+  // console.log(listings);
   return (
     <Container>
       <div className="mb-2 mt-4">

@@ -31,7 +31,7 @@ const RentModal = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [step, setStep] = useState(STEPS.CATEGORY);
 
-  console.log(step);
+  // console.log(step);
 
   const {
     register,
@@ -82,12 +82,12 @@ const RentModal = () => {
 
   const onBack = () => {
     setStep((value) => value - 1);
-    console.log(step);
+    // console.log(step);
   };
 
   const onNext = () => {
     setStep((value) => value + 1);
-    console.log(step);
+    // console.log(step);
   };
 
   //onSubmit function only at last step

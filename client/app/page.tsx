@@ -6,8 +6,7 @@ import EmptyState from "./components/EmptyState";
 import getCurrentUser from "./actions/getCurrentUser";
 import getListings from "./actions/getListings";
 import ListingCard from "./components/listings/ListingCard";
-import { IListingsParams } from "./actions/getListingsPro";
-import getListingsFiltered from "./actions/getListingsFiltered";
+import getListingsFiltered, { IListingsParams } from "./actions/getListingsFiltered";
 
 interface HomeProps {
   searchParams: IListingsParams
@@ -18,13 +17,13 @@ export default async function Home({ searchParams }: HomeProps) {
 
   let listings = await getListings();
 
-  if(searchParams) {
+  if(searchParams.startDate && searchParams.endDate || searchParams.locationValue || searchParams.guestCount || searchParams.roomType) {
     const filListings = await getListingsFiltered(searchParams)
-    listings = [...filListings, ...listings] 
+    listings = [...filListings, ...listings.splice(0, 20)] 
   }
   // const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
-  // console.log(listings);
+  console.log(listings);
   // console.log(currentUser)
 
   if (listings.length === 0) {
@@ -45,11 +44,11 @@ export default async function Home({ searchParams }: HomeProps) {
             gap-4
           "
       >
-        {listings.map((listing: any) => (
+        {listings.map((listing: any, index: number) => (
           <>
             <ListingCard
               currentUser={currentUser}
-              key={listing.id}
+              key={listing.id + index}
               listing={listing}
               listingId={listing.id}
             />

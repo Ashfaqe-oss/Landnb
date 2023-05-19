@@ -41,7 +41,3 @@ export default async function RootLayout({
     </html>
   );
 }
-
-function getAllListings() {
-  throw new Error("Function not implemented.");
-}

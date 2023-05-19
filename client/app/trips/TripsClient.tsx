@@ -17,7 +17,7 @@ const TripsClient: React.FC<TripsClientProps> = ({
   reservations,
   currentUser,
 }) => {
-  console.log(reservations);
+  // console.log(reservations);
 
   const router = useRouter();
   const [deletingId, setDeletingId] = useState('');

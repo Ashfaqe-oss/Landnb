@@ -124,7 +124,7 @@ export default async function getListingsFiltered(params: IListingsParams) {
 
     const listingsAR = await prisma.listingsAndReviews.findMany({
       where: queryLAR,
-      take: 130,
+      take: 100,
     });
 
     const isValidUrl = async (url: string) => {

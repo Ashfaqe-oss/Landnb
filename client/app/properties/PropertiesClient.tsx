@@ -17,7 +17,7 @@ const PropertiesClient: React.FC<PropertiesClientProps> = ({
   listings,
   currentUser,
 }) => {
-  console.log(listings);
+  // console.log(listings);
 
   const router = useRouter();
   const [deletingId, setDeletingId] = useState('');
