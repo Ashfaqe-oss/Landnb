@@ -3,14 +3,13 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
-import { SafeListing, SafeListingPro, SafeUser } from "../types";
+import { SafeListing, SafeUser } from "../types";
 import ListingCard from "../components/listings/ListingCard";
 import Container from "../components/Container";
 import Heading from "../components/Heading";
-import { Listing } from "@prisma/client";
 
 interface PropertiesClientProps {
-  listings: SafeListingPro[];
+  listings: any[];
   currentUser?: SafeUser | null;
 }
 

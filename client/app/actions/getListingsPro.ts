@@ -24,6 +24,14 @@ export default async function getListingsPro(params: IListingsParams) {
     const safeListings = listings.map((listing) => ({
       ...listing,
       createdAt: listing.createdAt.toISOString(),
+      name: "",
+      summary: "",
+      images: [],
+      picture_url: "",
+      street: "",
+      room_type: "",
+      listing_url: "",
+      host_url: "",
     }));
 
     return safeListings;
