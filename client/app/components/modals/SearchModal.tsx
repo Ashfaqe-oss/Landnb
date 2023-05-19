@@ -12,7 +12,6 @@ import { formatISO } from "date-fns";
 import Heading from "../Heading";
 import Calendar from "../inputs/Calendar";
 import Counter from "../inputs/Counter";
-import SelectFields from "../inputs/SelectFields";
 import Select from "react-select";
 
 enum STEPS {
