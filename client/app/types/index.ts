@@ -13,6 +13,19 @@ export type SafeListing = Omit<Listing, "createdAt"> & {
   host_url: string;
 };
 
+export type SafeListingPro = Omit<Listing, "createdAt"> & {
+  // name: string;
+  createdAt: string;
+  // summary: string;
+  // images: [];
+  // picture_url: string;
+  // street: string;
+  // room_type: string;
+  // listing_url: string;
+  // // host: [];
+  // host_url: string;
+};
+
 export type SafeReservation = Omit<
   Reservation,
   "createdAt" | "startDate" | "endDate" | "listing"
