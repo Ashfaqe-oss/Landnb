@@ -45,4 +45,3 @@ export default async function RootLayout({
 function getAllListings() {
   throw new Error("Function not implemented.");
 }
-// currentUser={currentUser}
