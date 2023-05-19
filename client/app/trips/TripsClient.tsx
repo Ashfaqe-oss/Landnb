@@ -9,7 +9,7 @@ import Container from "../components/Container";
 import Heading from "../components/Heading";
 
 interface TripsClientProps {
-  reservations: SafeReservation[];
+  reservations: any[];
   currentUser?: SafeUser | null;
 }
 
