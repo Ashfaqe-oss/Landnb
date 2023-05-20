@@ -35,7 +35,10 @@ const ChatInput: React.FC<ChatInputProps> = ({ className, ...props }) => {
         body: JSON.stringify({ messages }),
       });
 
-      console.log(response.body);
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      // console.log(response.body);
       return response.body;
     },
     onMutate(message) {
