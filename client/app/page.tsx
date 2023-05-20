@@ -23,7 +23,7 @@ export default async function Home({ searchParams }: HomeProps) {
   }
   // const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
-  console.log(listings);
+  // console.log(listings);
   // console.log(currentUser)
 
   if (listings.length === 0) {

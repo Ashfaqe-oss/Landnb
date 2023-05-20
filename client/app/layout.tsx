@@ -8,6 +8,8 @@ import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 import RentModal from "./components/modals/RentModal";
 import SearchModal from "./components/modals/SearchModal";
+import ChatBot from "./components/ChatBot/ChatBot";
+import ChatBotProvider from "./providers/ChatBotProvider";
 
 export const metadata = {
   title: "Landnb",
@@ -30,13 +32,16 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <ToasterProvider />
-        <LoginModal />
-        <RegisterModal />
-        <SearchModal />
-        <RentModal />
-        <Navbar currentUser={currentUser} />
-        <div className="pb-20 pt-28">{children}</div>
+        <ChatBotProvider>
+          <ToasterProvider />
+          <LoginModal />
+          <RegisterModal />
+          <SearchModal />
+          <RentModal />
+          <Navbar currentUser={currentUser} />
+          <div className="pb-20 pt-28">{children}</div>
+          <ChatBot />
+        </ChatBotProvider>
       </body>
     </html>
   );
