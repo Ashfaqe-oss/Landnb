@@ -27,7 +27,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ className, ...props }) => {
   const { mutate: sendMessage, isLoading } = useMutation({
     mutationKey: ["sendMessage"],
     mutationFn: async (_message: Message) => {
-      console.log(messages)
+      // console.log(messages)
 
       const response = await fetch("/api/chatbot", {
         method: "POST",
@@ -37,7 +37,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ className, ...props }) => {
         body: JSON.stringify({ messages }),
       });
 
-      console.log(response.body);
+      // console.log(response.body);
       return response.body;
     },
     onMutate(message) {
@@ -67,7 +67,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ className, ...props }) => {
           const { value, done: doneReading } = await reader.read()
           done = doneReading
           const chunkValue = decoder.decode(value)
-          console.log(chunkValue)
+          // console.log(chunkValue)
           updateMessage(id, (prev) => prev + chunkValue)
         }
   

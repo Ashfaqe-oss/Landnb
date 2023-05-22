@@ -11,7 +11,7 @@ export async function POST(request: Request) {
 
   //now parse the messages against zod schema
   const parsedMessages = MessageArraySchema.parse(messages);
-  console.log(messages)
+  // console.log(messages)
 
   //to chatgpt api.. parse then loop thru each to modify return
   const outboundMessages: ChatGPTMessage[] = parsedMessages.map((message) => {
@@ -44,7 +44,7 @@ export async function POST(request: Request) {
   //helper --  // Call the OpenAIStream API with the prepared payload
   const stream = await OpenAIStream(payload);
 
-  console.log(stream)
+  // console.log(stream)
 
   return new Response(stream);
 }
