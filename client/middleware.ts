@@ -26,6 +26,6 @@ export const config = {
     "/reservations",
     "/properties",
     "/favorites",
-    '/api/chatbot/:path*'
+    "/api/chatbot/:path*"
   ]
 };

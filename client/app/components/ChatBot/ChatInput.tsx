@@ -37,7 +37,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ className, ...props }) => {
         body: JSON.stringify({ messages }),
       });
 
-      // console.log(response.body);
+      console.log(response.body);
       return response.body;
     },
     onMutate(message) {

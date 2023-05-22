@@ -14,7 +14,7 @@ export default async function getListings() {
       createdAt: listing.createdAt.toISOString(),
     }));
 
-    const listingsAR = await prisma.listingsAndReviews.findMany({ take: 10 });
+    const listingsAR = await prisma.listingsAndReviews.findMany({ take: 130 });
 
     const isValidUrl = async (url: string) => {
       try {

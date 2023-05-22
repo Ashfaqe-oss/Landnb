@@ -8,6 +8,11 @@ const defaultValue = [
     text: '👋 Hello, how can I help you? Try clicking on the Menu icon',
     isUserMessage: false,
   },
+  {
+    id: nanoid(),
+    text: 'Click on Airbnb your home !',
+    isUserMessage: false,
+  },
 ]
 export const MessagesContext = createContext<{
   messages: Message[]
