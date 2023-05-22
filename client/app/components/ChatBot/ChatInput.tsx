@@ -38,7 +38,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ className, ...props }) => {
       if (!response.ok) {
         throw new Error(response.statusText);
       }
-      // console.log(response.body);
+      console.log(response.body);
       return response.body;
     },
     onMutate(message) {

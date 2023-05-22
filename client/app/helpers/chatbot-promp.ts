@@ -11,6 +11,7 @@ Use this Listings metadata to answer the customer questions:
 ${listingsData} ${listingsAndReviewsData}
 
 Users can click menu icon to access all features of website.
+Suggest to click on "Aitbnb your home" button to see features.
 
 The listingsData contains listings that are created on the Landnb website by other users. 
 Ths listingsAndReviewsData contains listings that were created on Airbnb website by actual owners and users.

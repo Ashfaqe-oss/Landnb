@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { FC, HTMLAttributes, useContext } from "react";
+import { HTMLAttributes, useContext } from "react";
 import { MessagesContext } from "@/app/hooks/useChatbot";
 import MarkdownLite from "./MarkdownLite";
 
@@ -11,7 +11,7 @@ const ChatMessages: React.FC<ChatMessagesProps> = ({className, ...props}) => {
   const { messages } = useContext(MessagesContext);
   const inverseMessages = [...messages].reverse();
 
-//   console.log(messages)
+  console.log(messages)
 
   return (
     <div
