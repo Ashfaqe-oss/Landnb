@@ -35,8 +35,8 @@ export async function POST(request: Request) {
 
   //open ai stream
   const payload: OpenAIStreamPayload = {
-    // model: 'gpt-3.5-turbo',
-    model: "text-davinci-003",
+    model: 'gpt-3.5-turbo',
+    // model: "text-davinci-003",
     messages: outboundMessages,
     temperature: 0.4,
     top_p: 1,
