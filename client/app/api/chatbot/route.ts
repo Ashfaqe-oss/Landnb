@@ -6,10 +6,12 @@ import {
 } from "@/lib/openai-stream";
 import { MessageArraySchema } from "@/lib/validators/message";
 
+// const ip = req.ip ?? '127.0.0.1'
 export const runtime = 'edge'
 
 
 export async function POST(request: Request) {
+  // const ip = request.ip
   const { messages } = await request.json();
 
   //now parse the messages against zod schema
