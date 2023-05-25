@@ -49,6 +49,9 @@ export async function POST(request: Request) {
 
   console.log(stream)
 
+  if(!stream) {
+    return new Response("Openai server is down / is experiencing heavy load")
+  }
   return new Response(stream);
 }
 
