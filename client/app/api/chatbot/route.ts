@@ -6,17 +6,15 @@ import {
 } from "@/lib/openai-stream";
 import { MessageArraySchema } from "@/lib/validators/message";
 
-if (!process.env.OPENAI_API_KEY) {
-  throw new Error("Missing env var from OpenAI");
-}
-
 export const runtime = 'edge'
+
 
 export async function POST(request: Request) {
   const { messages } = await request.json();
 
   //now parse the messages against zod schema
   const parsedMessages = MessageArraySchema.parse(messages);
+  console.log(messages)
 
   //to chatgpt api.. parse then loop thru each to modify return
   const outboundMessages: ChatGPTMessage[] = parsedMessages.map((message) => {
@@ -34,8 +32,8 @@ export async function POST(request: Request) {
 
   //open ai stream
   const payload: OpenAIStreamPayload = {
-    // model: 'gpt-3.5-turbo',
-    model: "text-davinci-003",
+    model: 'gpt-3.5-turbo',
+    // model: "text-davinci-003",
     messages: outboundMessages,
     temperature: 0.4,
     top_p: 1,
@@ -49,6 +47,11 @@ export async function POST(request: Request) {
   //helper --  // Call the OpenAIStream API with the prepared payload
   const stream = await OpenAIStream(payload);
 
+  console.log(stream)
+
+  if(!stream) {
+    return new Response("Openai server is down / is experiencing heavy load")
+  }
   return new Response(stream);
 }
 
