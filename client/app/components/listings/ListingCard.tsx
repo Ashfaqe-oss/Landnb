@@ -89,7 +89,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     try {
       console.log("striping", price);
       const { sessionId } = await postData({
-        url: "/api/payment",
+        url: "/api/payments",
         data: { price },
       });
       const stripe = await getStripe();

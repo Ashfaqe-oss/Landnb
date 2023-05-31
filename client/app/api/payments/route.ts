@@ -25,7 +25,15 @@ export async function POST(req: Request) {
       cancel_url: "http://localhost:3000",
     });
 
-    return NextResponse.json(session.url);
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: price,
+      currency: "inr",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+
+    return NextResponse.json(paymentIntent.client_secret);
   } catch (error: any) {
     console.log("Error in POST", { error });
     return new NextResponse("Internal Server Error stripe checkout", {
