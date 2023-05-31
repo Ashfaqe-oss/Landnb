@@ -9,6 +9,7 @@ export async function POST(req: Request) {
 
   try {
     console.log(price);
+    console.log('http://localhost:3000')
 
     // const { price } = req.body;
 

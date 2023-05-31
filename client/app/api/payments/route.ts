@@ -9,21 +9,25 @@ export async function POST(req: Request) {
 
   try {
     console.log(price);
+    console.log('http://localhost:3000')
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+      apiVersion: "2022-11-15"
+    });
     // let data = await req.json();
     // let price = data.price;
-    const session = await stripe.checkout.sessions.create({
-      line_items: [
-        {
-          price: price,
-          quantity: 1,
-        },
-      ],
-      mode: "payment",
-      success_url: "http://localhost:3000",
-      cancel_url: "http://localhost:3000",
-    });
+    // const session = await stripe.checkout.sessions.create({
+    //   line_items: [
+    //     {
+    //       price: price,
+    //       quantity: 1,
+    //     },
+    //   ],
+      // mode: "payment",
+      // success_url: "http://localhost:3000",
+      // cancel_url: "http://localhost:3000",
+    // });
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: price,
@@ -31,6 +35,10 @@ export async function POST(req: Request) {
       automatic_payment_methods: {
         enabled: true,
       },
+      // mode: "payment",
+      // success_url: "http://localhost:3000",
+      // cancel_url: "http://localhost:3000",
+
     });
 
     return NextResponse.json(paymentIntent.client_secret);
