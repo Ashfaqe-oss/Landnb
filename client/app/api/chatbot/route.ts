@@ -6,8 +6,7 @@ import {
 } from "@/lib/openai-stream";
 import { MessageArraySchema } from "@/lib/validators/message";
 
-export const runtime = 'edge'
-
+// export const runtime = 'edge'
 
 export async function POST(request: Request) {
   const { messages } = await request.json();

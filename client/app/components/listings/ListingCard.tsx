@@ -13,6 +13,9 @@ import { format } from "date-fns";
 import Link from "next/link";
 import getListingById from "@/app/actions/getListingById";
 import Button from "../Button";
+import toast from "react-hot-toast";
+import { postData } from "@/app/helpers/stripe-url";
+import { getStripe } from "@/app/libs/stripeClient";
 
 interface ListingCardProps {
   listing: SafeListing;
@@ -77,6 +80,25 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
   // console.log(listing);
 
+  const handlePayment = async () => {
+    if (!currentUser) {
+      // setPriceIdLoading(undefined);
+      return toast.error("You Must be logged in !");
+    }
+
+    try {
+      console.log("striping", price);
+      const { sessionId } = await postData({
+        url: "/api/stripe-checkout",
+        data: { price },
+      });
+      const stripe = await getStripe();
+      stripe?.redirectToCheckout({ sessionId });
+    } catch (error) {
+      return toast.error((error as Error)?.message);
+    }
+  };
+
   if (!listing?.imageSrc) {
     return null;
   }
@@ -134,7 +156,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
           <div className="font-semibold">$ {price}</div>
           {!reservation && <div className="font-light">night</div>}
           {listing.listing_url && (
-            <Link href={listing.listing_url} target="_blank" rel="noopener noreferrer">
+            <Link
+              href={listing.listing_url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div className="text-xs underline ml-4 text-neutral-400 justify-end">
                 Go to airbnb
               </div>
@@ -148,17 +174,16 @@ const ListingCard: React.FC<ListingCardProps> = ({
           </p>
         </div>
 
+        <button onClick={handlePayment}>Pay ${price}</button>
         {onAction && actionLabel && (
-          <div>
-
-          <Button
-            disabled={disabled}
-            small
-            label={actionLabel} 
-            onClick={handleCancel}
-          />
+          <div className="flex flex-row gap-4">
+            <Button
+              disabled={disabled}
+              small
+              label={actionLabel}
+              onClick={handleCancel}
+            />
           </div>
-
         )}
       </div>
     </div>

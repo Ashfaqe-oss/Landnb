@@ -189,6 +189,7 @@ model Reservation {
   startDate            DateTime
   endDate              DateTime
   totalPrice           Int
+  paid                 Boolean  @default(false)
   createdAt            DateTime @default(now())
   listingsAndReviewsId String?  @unique
 
